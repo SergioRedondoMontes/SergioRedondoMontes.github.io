@@ -1,5 +1,5 @@
 var xmlhttp = new XMLHttpRequest();
-        var url = "./json/sistemas.json";
+        var url = "json/sistemas.json";
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var myArr = JSON.parse(this.responseText);
@@ -12,8 +12,9 @@ var xmlhttp = new XMLHttpRequest();
         function myFunction(arr) {
 
             var tabla = document.createElement("table");
-            var element = document.getElementById("1");
+            var element = document.getElementById("content");
 
+            alert(element);
 
             var tr = document.createElement("tr");
             var titulo = document.createElement("th");
