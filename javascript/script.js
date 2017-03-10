@@ -14,7 +14,6 @@ var xmlhttp = new XMLHttpRequest();
             var tabla = document.createElement("table");
             var element = document.getElementById("content");
 
-            alert(element);
 
             var tr = document.createElement("tr");
             var titulo = document.createElement("th");
