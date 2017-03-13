@@ -1,0 +1,46 @@
+
+[
+
+	{
+    "titulo": "Curriculum",
+	"fecha": "22/12/16",
+	"descripcion": "Curriculum Vitae",
+	"url": "https://sergioredondomontes.github.io/cv.SergioRedondo/index.html",
+	"miembros": "Sergio Redondo",
+	"asignaturas":"" ,
+	"disponible": "si/no",
+	"destacado": "si/no",
+	"responsive": "si/no",
+	"recomendado": "si/no",
+    "imagen": "imagenes/cv.png"
+    },
+	
+	{
+    "titulo": "Pagina proyecto grupal",
+	"fecha": "27/11/16",
+	"descripcion": "Pequeña pagina hecha con un compañero",
+	"url": "https://sergioredondomontes.github.io/LM_UD1_A09_Proyecto_Redondo.Sergio/Index.html",
+	"miembros": "Sergio Redondo y Oscar de la Fuente",
+	"asignaturas": "",
+	"disponible": "si/no",
+	"destacado": "si/no",
+	"responsive": "si/no",
+	"recomendado": "si/no",
+    "imagen": "imagenes/topsneakers.png"
+    },
+
+	{
+    "titulo": "Ver mas",
+	"fecha": "3/11/16",
+	"descripcion": "Primer glosario realizado",
+	"url": "https://sergioredondomontes.github.io/PracticaEjemploMaquetacion/Index.html",
+	"miembros": "Sergio Redondo",
+	"asignaturas":"" ,
+	"disponible": "si/no",
+	"destacado": "si/no",
+	"responsive": "si/no",
+	"recomendado": "si/no",
+    "imagen": "imagenes/starwars.png"
+    }
+
+]

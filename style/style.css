@@ -241,3 +241,30 @@ table tr td
 { background: #F0EFE2;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
+#content{
+    width: 100%;
+}
+.post_section {
+    width: 100%;
+    height: 100%;
+}
+#content section article{
+    width: 300px;
+    margin-top: 10%;
+    margin-left: 10%;
+    float: left;
+    display: inline-block;
+    background-color:#ffffff;
+}
+.imageClass{
+    width: 100%;
+    
+}
+#content section h2 {
+    text-align: center;
+}
+#content section p {
+    margin-left: 10px;
+    text-align: justify;
+}
