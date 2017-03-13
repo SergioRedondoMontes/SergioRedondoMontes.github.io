@@ -26,6 +26,7 @@ var xmlhttp = new XMLHttpRequest();
                 var div_imagen = document.createElement("div");
                 var imagen = document.createElement("img");
                 var div_texto = document.createElement("div");
+                var a = document.createElement("a");
                 var h2 = document.createElement("h2");
                 var p1 = document.createElement("p");
                 var p2 = document.createElement("p");
@@ -40,8 +41,8 @@ var xmlhttp = new XMLHttpRequest();
                 
                 section.setAttribute("class", "post_section");
                 div_imagen.setAttribute("class","post_image");
-                div_imagen.setAttribute("target","_blank");
-                div_imagen.setAttribute("href",arr[i].url); 
+                a.setAttribute("target","_blank");
+                a.setAttribute("href",arr[i].url); 
                 imagen.setAttribute("class", "imageClass");
                 imagen.setAttribute("src", arr[i].imagen);
                 div_texto.setAttribute("class","post_content");
@@ -50,7 +51,8 @@ var xmlhttp = new XMLHttpRequest();
                 
                 section.appendChild(article);
                 article.appendChild(div_imagen);
-                div_imagen.appendChild(imagen);
+                div_imagen.appendChild(a);
+                a.appendChild(imagen);
                 article.appendChild(div_texto);
                 div_texto.appendChild(h2);
                 h2.appendChild(titulo);
