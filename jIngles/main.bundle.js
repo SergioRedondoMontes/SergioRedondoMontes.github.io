@@ -152,6 +152,8 @@ var Actividad1 = (function () {
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         this.crearEscenarioMenuJuego();
+        this.audioMenu = new Audio('./assets/sounds/menu.mp3');
+        this.audioMenu.play();
     }
     /**
      * OJO!! AUNQUE EN ESTE EJEMPLO SE USE EL PANEL, ES OBLIGATORIO CREAR UN OBJETO WINDOW EN EL MILIB, Y AGREGARLE EL BOTON
@@ -194,24 +196,40 @@ var Actividad1 = (function () {
     Actividad1.prototype.buttonListenerOnClick = function (btn) {
         console.log("dentro");
         if (this.btnPlay == btn) {
+            this.audioButtons = new Audio('./assets/sounds/button.mp3');
+            this.audioButtons.play();
             console.log("play");
             this.motor.setViewVisibility(this.panelMenu.uid, false);
             this.motor.setViewVisibility(this.windowSelector.uid, true);
         }
         else if (this.btnExit == btn) {
+            this.audioButtons = new Audio('./assets/sounds/button.mp3');
+            this.audioButtons.play();
             this.motor.setViewVisibility(this.panelMenu.uid, false);
         }
         else if (this.btnAnimales == btn) {
+            this.audioMenu.pause();
+            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3');
+            this.audioSelectorGame.play();
+            this.audioSelectorGame = new Audio('./assets/sounds/startBattle.mp3');
+            this.audioSelectorGame.play();
             this.motor.setViewVisibility(this.windowSelector.uid, false);
             this.JuegoAnimales = new __WEBPACK_IMPORTED_MODULE_5__juegoAnimales__["a" /* JuegoAnimales */](this.motor, this);
         }
         else if (this.btnColores == btn) {
+            this.audioMenu.pause();
+            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3');
+            this.audioSelectorGame.play();
             this.motor.setViewVisibility(this.windowSelector.uid, false);
             this.JuegoColores = new __WEBPACK_IMPORTED_MODULE_6__juegoColores__["a" /* JuegoColores */](this.motor, this);
         }
         else if (this.btnEscuela == btn) {
+            this.audioMenu.pause();
+            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3');
+            this.audioSelectorGame.play();
             console.log("ahhh");
             this.motor.setViewVisibility(this.windowSelector.uid, false);
+            this.audioButtons.pause();
             this.JuegoEscuela = new __WEBPACK_IMPORTED_MODULE_7__juegoEscuela__["a" /* JuegoEscuela */](this.motor, this);
         }
     };
@@ -242,6 +260,8 @@ var Actividad1 = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__milib_views_imgs_imagen__ = __webpack_require__("../../../../../src/app/milib/views/imgs/imagen.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__milib_views_windows_window__ = __webpack_require__("../../../../../src/app/milib/views/windows/window.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__milib_views_stickers_sticker__ = __webpack_require__("../../../../../src/app/milib/views/stickers/sticker.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__ = __webpack_require__("../../../../../src/app/milib/views/labels/label.ts");
+
 
 
 
@@ -252,9 +272,18 @@ var JuegoAnimales = (function () {
     function JuegoAnimales(vMotor, vActividad) {
         this.motor = vMotor;
         this.actividad = vActividad;
+        this.audio = new Audio('./assets/sounds/welcome.mp3');
+        var aux = this;
+        setTimeout(function () {
+            aux.audio.play();
+        }, 2000);
         this.crearEscenarioJuego();
     }
     JuegoAnimales.prototype.crearEscenarioJuego = function () {
+        var pmw = __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.6;
+        var pmh = __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.6;
+        var pmx = __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth2 - (pmw >> 1);
+        var pmy = __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight2 - (pmh >> 1);
         this.imgFondoSiluetas = new __WEBPACK_IMPORTED_MODULE_3__milib_views_imgs_imagen__["a" /* Imagen */](this.motor, 0, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.7, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight);
         this.imgFondoSiluetas.setImg('./assets/imagenesJuego/animales/animales2.jpg');
         this.motor.addViewToParentView(this.actividad.imagenFondo, this.imgFondoSiluetas);
@@ -265,24 +294,59 @@ var JuegoAnimales = (function () {
         this.panelBlackConejo = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, 0, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.15, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
         this.panelBlackConejo.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackConejo);
+        this.lblConejo = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, 0, this.panelBlackConejo.h * 0.55, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.15, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
+        this.lblConejo.setTexto("Rabbit");
+        this.lblConejo.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblConejo);
+        this.motor.setViewVisibility(this.lblConejo.uid, false);
         this.panelBlackPez = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.17, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.175, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
         this.panelBlackPez.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackPez);
+        this.lblPez = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.17, this.panelBlackPez.h * 0.45, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.175, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
+        this.lblPez.setTexto("Fish");
+        this.lblPez.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblPez);
+        this.motor.setViewVisibility(this.lblPez.uid, false);
         this.panelBlackLoro = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.354, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.07, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.15, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.4);
         this.panelBlackLoro.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackLoro);
+        this.lblLoro = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.354, this.panelBlackLoro.h * (-0.40), __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.15, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.4);
+        this.lblLoro.setTexto("Parrot");
+        this.lblLoro.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblLoro);
+        this.motor.setViewVisibility(this.lblLoro.uid, false);
         this.panelBlackPerro = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.49, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.19, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.457);
         this.panelBlackPerro.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackPerro);
+        this.lblPerro = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, this.panelBlackPerro.x + this.panelBlackPerro.x * 0.1, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.19, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.457);
+        this.lblPerro.setTexto("Dog");
+        this.lblPerro.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblPerro);
+        this.motor.setViewVisibility(this.lblPerro.uid, false);
         this.panelBlackGato = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.41, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.18, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
         this.panelBlackGato.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackGato);
+        this.lblGato = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, 0, this.panelBlackGato.y * 1.6, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.18, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38);
+        this.lblGato.setTexto("Cat");
+        this.lblGato.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblGato);
+        this.motor.setViewVisibility(this.lblGato.uid, false);
         this.panelBlackTortuga = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.22, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.53, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.175, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.42);
         this.panelBlackTortuga.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackTortuga);
+        this.lblTortuga = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.22, this.panelBlackTortuga.y * 1.2, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.175, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.42);
+        this.lblTortuga.setTexto("Turtle");
+        this.lblTortuga.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblTortuga);
+        this.motor.setViewVisibility(this.lblTortuga.uid, false);
         this.panelBlackPajaro = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.4, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.50, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.22, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.365);
         this.panelBlackPajaro.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackPajaro);
+        this.lblPajaro = new __WEBPACK_IMPORTED_MODULE_6__milib_views_labels_label__["a" /* Label */](this.motor, this.panelBlackPajaro.x * 1.2, this.panelBlackPajaro.y * 0.75, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.22, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.365);
+        this.lblPajaro.setTexto("Bird");
+        this.lblPajaro.setFontStyle("30px Comic Sans MS");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.lblPajaro);
+        this.motor.setViewVisibility(this.lblPajaro.uid, false);
         ///////////////////////////////////////////////////////////////////
         this.panelStickers = new __WEBPACK_IMPORTED_MODULE_0__milib_views_panels_panel__["a" /* Panel */](this.motor, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.7, 0, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.3, __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight);
         this.panelStickers.setColor("white");
@@ -332,6 +396,10 @@ var JuegoAnimales = (function () {
         this.motor.addViewToParentView(this.windowJuego, this.pajaro);
         this.pajaro.setListener(this);
         __WEBPACK_IMPORTED_MODULE_1__milib_events_eventsadmin__["a" /* EventsAdmin */].instance.addMouseDragToView(this.pajaro);
+        this.imgVictoria = new __WEBPACK_IMPORTED_MODULE_3__milib_views_imgs_imagen__["a" /* Imagen */](this.motor, pmx, pmy, pmw, pmh);
+        this.imgVictoria.setImg("./assets/great.jpg");
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.imgVictoria);
+        this.motor.setViewVisibility(this.imgVictoria.uid, false);
         // PRUEBA         this.motor.setViewVisibility(this.windowJuego.uid,false);
         /*
         this.imgPrueba = new Imagen(this.motor,0,0,this.windowJuego.w*0.2,this.windowJuego.h*0.38);
@@ -347,31 +415,53 @@ var JuegoAnimales = (function () {
         if (sticker.getName() == 'conejo' && (sticker.x > 0 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.15) && (sticker.y > 0 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.35)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackConejo.uid, false);
+            this.audio = new Audio('./assets/sounds/rabbit.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblConejo.uid, true);
         }
         else if (sticker.getName() == 'gato' && (sticker.x > 0 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.18) && (sticker.y > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.41 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.76)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackGato.uid, false);
+            this.audio = new Audio('./assets/sounds/cat.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblGato.uid, true);
         }
         else if (sticker.getName() == 'pez' && (sticker.x > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.17 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.345) && (sticker.y > 0 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.38)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackPez.uid, false);
+            this.audio = new Audio('./assets/sounds/fish.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblPez.uid, true);
         }
         else if (sticker.getName() == 'loro' && (sticker.x > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.354 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.484) && (sticker.y > 0 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.452)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackLoro.uid, false);
+            this.audio = new Audio('./assets/sounds/parrot.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblLoro.uid, true);
         }
         else if (sticker.getName() == 'perro' && (sticker.x > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.49 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.68) && (sticker.y > 0 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.457)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackPerro.uid, false);
+            this.audio = new Audio('./assets/sounds/dog.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblPerro.uid, true);
         }
         else if (sticker.getName() == 'tortuga' && (sticker.x > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.22 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.75) && (sticker.y > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.53 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.95)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackTortuga.uid, false);
+            this.audio = new Audio('./assets/sounds/turtle.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblTortuga.uid, true);
         }
         else if (sticker.getName() == 'pajaro' && (sticker.x > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.4 && sticker.x < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenWidth * 0.62) && (sticker.y > __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.5 && sticker.y < __WEBPACK_IMPORTED_MODULE_2__milib_dataholder_dataholder__["a" /* DataHolder */].instance.nScreenHeight * 0.865)) {
             this.motor.setViewVisibility(sticker.uid, false);
             this.motor.setViewVisibility(this.panelBlackPajaro.uid, false);
+            this.audio = new Audio('./assets/sounds/bird.mp3');
+            this.audio.play();
+            this.motor.setViewVisibility(this.lblPajaro.uid, true);
         }
+        this.comprobarVictoria();
     };
     JuegoAnimales.prototype.screenSizeChanged = function (vWidth, vHeight) {
         //console.log("SE HA ACTUALIZADO EL TEMAÑO DE LA PANTALLA");
@@ -381,6 +471,22 @@ var JuegoAnimales = (function () {
     };
     JuegoAnimales.prototype.buttonMoveClicked = function (win) {
         console.log("PRESIONO MOVER");
+    };
+    JuegoAnimales.prototype.comprobarVictoria = function () {
+        if (this.panelBlackConejo.blVisible == false && this.panelBlackGato.blVisible == false && this.panelBlackPez.blVisible == false && this.panelBlackLoro.blVisible == false && this.panelBlackPerro.blVisible == false && this.panelBlackTortuga.blVisible == false && this.panelBlackPajaro.blVisible == false) {
+            console.log("GANSTEEEEEE!!!!!!!!!!!!! YUPIIIIIIIIIIII!!!!!!!");
+            var aux = this;
+            setTimeout(function () {
+                aux.motor.setViewVisibility(aux.imgVictoria.uid, true);
+                aux.audioGreat2 = new Audio('./assets/sounds/aplausos.mp3');
+                aux.audioGreat1 = new Audio('./assets/sounds/congratulations.mp3');
+                aux.audioGreat2.play();
+                aux.audioGreat1.play();
+                setTimeout(function () {
+                    location.reload(); // recarga la página para volver al menu
+                }, 3000);
+            }, 2500);
+        }
     };
     return JuegoAnimales;
 }());
