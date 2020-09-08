@@ -1,0 +1,167 @@
+{
+  "main": {
+    "name": "Sergio Redondo",
+    "occupation": "Programming teacher at @U-TAD",
+    "description": "Programming teacher by day, Founder && Freelancer by NBTECH.",
+    "image": "IG_Sergio.jpg",
+    "bio": "My name is Sergio, I'm a Software Engineer student. Currently I'm working at U-TAD while also Freelancer by NBTECH ",
+    "contactmessage": "Get in touch with me to receive further details, get coached or anything else.",
+    "email": "redondomontes.sergio.com",
+    "phone": "+34 620 162 208",
+    "address": {
+      "street": "",
+      "city": "Madrid",
+      "state": "ES",
+      "zip": "28943"
+    },
+    "website": "http://www.nbtech.es",
+    "resumedownload": "http://nbtech.es",
+    "social": [{
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/sergio-redondo-montes/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "github",
+        "url": "http://github.com/SergioRedondoMontes",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "",
+    "education": [{
+        "school": "University Center for Technology and Digital Art",
+        "degree": "Official Bachelor Degree in Software Engineering",
+        "graduated": "2018 - Present",
+        "description": "Mention in DATA"
+      },
+      {
+        "school": "University Center for Technology and Digital Art",
+        "degree": "Vocational training in Multiplatfors Apps",
+        "graduated": "2016 - 2018",
+        "description": "Graduated with Distinction"
+      }
+    ],
+    "work": [{
+        "company": "University Center for Technology and Digital Art",
+        "title": "Programming teacher",
+        "years": "September 2018 - Present",
+        "description": "Teaching HTML/CSS/JS, Java & Swift to thousands of students."
+      },
+      {
+        "company": "NBTECH",
+        "title": "Software Engineer",
+        "years": "Feb 2019 - Present",
+        "description": "Building experiences for our clients."
+      }
+    ],
+    "skills": [{
+        "name": "R",
+        "level": "50%"
+      },
+      {
+        "name": "Python",
+        "level": "30%"
+      },
+      {
+        "name": "Java",
+        "level": "80%"
+      },
+      {
+        "name": "Git",
+        "level": "70%"
+      },
+      {
+        "name": "HTML5",
+        "level": "80%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "20%"
+      }
+    ],
+    "archivement": [{
+        "company": "Hack 4 Mobility",
+        "title": "@lifeatseat - 4YFN",
+        "years": "Feb 2019 ",
+        "description": "Reward of HotelsCombined to the group that creates the most disruptive idea."
+      },
+      {
+        "company": "Programame",
+        "title": "National Programame Spain",
+        "years": "Jun 2018",
+        "description": "ProgramaMe is the Spanish programming contest for students enrolled in Vocational Training. (3º Place)"
+      },
+      {
+        "company": "Programame",
+        "title": "Madrid Programame Spain",
+        "years": "Mar 2018",
+        "description": "ProgramaMe is the Spanish programming contest for students enrolled in Vocational Training. (1º Place)"
+      },
+      {
+        "company": "HackaTrips Hackathon",
+        "title": "FITUR - MINUBE",
+        "years": "Jan 2018 ",
+        "description": "Improve the mobility of ambulances in big cities (First place)."
+      },
+      {
+        "company": "Programame",
+        "title": "National Programame Spain",
+        "years": "Jun 2017",
+        "description": "ProgramaMe is the Spanish programming contest for students enrolled in Vocational Training Cycles. (7º Place)"
+      },
+      {
+        "company": "Programame",
+        "title": "Madrid Programame Spain",
+        "years": "Mar 2017",
+        "description": "ProgramaMe is the Spanish programming contest for students enrolled in Vocational Training Cycles. (1º Place)"
+      }
+
+    ]
+  },
+  "portfolio": {
+    "projects": [{
+        "title": "MERN Stack WhatsApp Clone",
+        "category": "WhatsApp Clone built with MERN (MongoDB, ExpressJS, ReactJS, NodeJS)",
+        "image": "whatsapp-mern.jpeg",
+        "url": "https://www.youtube.com/watch?v=gzdQDxzW2Tw"
+      },
+      {
+        "title": "MERN Stack TikTok Clone",
+        "category": "TikTok Clone built with MERN (MongoDB, ExpressJS, ReactJS, NodeJS)",
+        "image": "tiktok-mern.jpeg",
+        "url": "https://www.youtube.com/watch?v=g8yGxDMyGiE"
+      },
+      {
+        "title": "Facebook Clone with React",
+        "category": "Facebook Clone built with ReactJS",
+        "image": "facebook-clone.png",
+        "url": "https://www.youtube.com/watch?v=B-kxUMHBxNo"
+      },
+      {
+        "title": "Airbnb Clone",
+        "category": "Facebook Clone built with ReactJS",
+        "image": "airbnb-clone.jpeg",
+        "url": "https://www.youtube.com/watch?v=BtJeH_-XYaA"
+      },
+      {
+        "title": "Netflix Clone",
+        "category": "Facebook Clone built with ReactJS",
+        "image": "netflix-clone.jpeg",
+        "url": "https://www.youtube.com/watch?v=XtMThy8QKqU&t=9358s"
+      }
+    ]
+  },
+  "testimonials": {
+    "testimonials": [{
+        "text": "Pocas veces se conoce a un estudiante con mejor equibrio entre aptitud y actitud. Durante los dos años que he sido su profesor, me ha sorprendido su inquietud por la tecnología, su talante positivo y su capacidad de trabajo en equipo. No se ha conformado con aprovechar lo que sucedía en el aula, se quedaba por las tardes para para investigar o ayudar a los compañeros. Como profesor suyo de programación, estoy muy orgulloso de él ya que ha ganado dos veces consecutivas el concurso de Programame (Madrid). Cualquiera que conozca a Sergio se dará cuenta instantánemente de que es alguien que alcanzará las metas que se proponga.",
+        "user": "Pedro J. Camacho Ortega"
+      },
+      {
+        "text": "Sergio is an incredible techy, and a dedicated student. For him impossible is nothing, and when you need to solve a problem he is the one who will find you the best and most optimized solution. He is a great team player, his dedication to teach his fellow team members and other students show his proactive side, as well as an ability to not only understand new tech but also teach it to others ensuring they understand it. There is no doubt that Sergio would be an invaluable member of any organization, and that he will always surprise you for good.",
+        "user": "Jonathan Zaji Bar-Magen Numhauser PhD"
+      }
+    ]
+  }
+}
